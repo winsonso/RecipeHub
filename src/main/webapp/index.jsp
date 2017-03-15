@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en"> <!--Tish's comment to try pushing to repository-->
+<html lang="en"> 
 <head>
  <title>RecipeHub - Recipe Search and Bookmarks</title>
  <meta charset="utf-8">
@@ -29,9 +29,9 @@
    <div class="collapse navbar-collapse" id="myNavbar">
      <ul class="nav navbar-nav">
      <li class="navbar-brand">RecipeHub</li>
-       <li class="active"><a href="#">Home</a></li>
-       <li><a href="#">Recipe Search</a></li>
-       <li><a href="#">Bookmarks</a></li>
+       <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+       <li><a href="#"><span class="glyphicon glyphicon-search"></span> Recipe Search</a></li>
+       <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

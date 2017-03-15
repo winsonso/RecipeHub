@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"> <!--Tish's comment to try pushing to repository-->
 <head>
  <title>RecipeHub - Recipe Search and Bookmarks</title>
  <meta charset="utf-8">

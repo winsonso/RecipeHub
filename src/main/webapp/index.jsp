@@ -31,7 +31,7 @@
      <li class="navbar-brand">RecipeHub</li>
        <li class="active"><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Recipe Search</a></li>
-       <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a></li>
+       <li><a href="main.jsp"><span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a></li>
      </ul>
      <ul class="nav navbar-nav navbar-right">
        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>

@@ -16,28 +16,7 @@
         <title>RecipeHub Login</title>
     </head>
     <body>
-
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="navbar-brand">RecipeHub</li>
-
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#" data-toggle="modal" data-target="#SignUpModal"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <%@ include file="includes/navbar.inc" %>
         <div id="form-messages"></div>
 
         <div class="col-sm-1">
@@ -133,6 +112,6 @@
                     </div>
                 </div>
             </div>
-
+        <%@ include file="includes/footer.inc" %>   
     </body>
 </html>

@@ -16,29 +16,7 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     </head>
     <body>
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li class="navbar-brand">RecipeHub</li>
-                        <li><a href="index.jsp"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-search"></span> Recipe Search</a></li>
-                        <li class="active"><a href="bookmarked.jsp"><span class="glyphicon glyphicon-bookmark"></span> Bookmarks</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span>Username</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <%@ include file="includes/navbar.inc" %>
         
         <div class="container">
             <h2>Bookmarked Recipes</h2>         
@@ -67,5 +45,7 @@
               </tbody>
             </table>
           </div>
+    
+    <%@ include file="includes/footer.inc" %>   
     </body>
 </html>

@@ -14,6 +14,8 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <title>RecipeHub Login</title>
+        <%@ include file="includes/signup.js" %>
+        <%@ include file="includes/validatelogin.js" %>
     </head>
     <body>
         <nav class="navbar navbar-default">
@@ -47,12 +49,12 @@
 
             <div id="login" class="tab-pane fade in active">
 
-                <form id="ajax-login" method="post" action="#">
+                <form id="ajax-login" method="post" action="ValidateLogin">
                     <div class="field">
                         <br>
                         <br>
                         <label for="name">Username:</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="username" name="username" required>
                     </div>
 
                     <br>
@@ -92,7 +94,7 @@
 
                             <div id="modalAlert"></div>
 
-                            <form id="modalForm" action="#" method="post" role="form">
+                            <form id="modalForm" action="Signup" method="post" role="form">
                     
                                 <div class="form-group">
                                     <label for="signupFirstName">First Name</label>
@@ -110,20 +112,26 @@
                                            id="signupEmail" name="signupEmail"/>
                                 </div>
                                 
-                                    <div class="form-group">
-                                    <label for="password">New Password</label>
+                                  <div class="form-group">
+                                    <label for="signupUsername">Username</label>
                                     <input type="text" class="form-control"
-                                           id="password" name="password"/>
+                                           id="signupUsername" name="signupUsername"/>
+                                </div>
+                                
+                                    <div class="form-group">
+                                    <label for="newPassword">Password</label>
+                                    <input type="password" class="form-control"
+                                           id="newPassword" name="newPassword"/>
                                 </div>
                                 
                                     <div class="form-group">
                                     <label for="confirmPassword">Confirm Password</label>
-                                    <input type="text" class="form-control"
+                                    <input type="password" class="form-control"
                                            id="confirmPassword" name="confirmPassword"/>
                                 </div>
                              
                
-                                <button id="submitSignUp" type="button" class="btn btn-default">Submit</button>
+                                <button id="submitSignUp" type="submit" class="btn btn-default">Submit</button>
                             </form>
 
 
@@ -131,7 +139,6 @@
 
                     </div>
                 </div>
-            </div>
-        <%@ include file="includes/footer.inc" %>   
+            </div> 
     </body>
 </html>

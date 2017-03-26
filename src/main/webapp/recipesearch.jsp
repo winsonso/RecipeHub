@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ page import="java.net.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,69 +15,74 @@
         <%@ include file="includes/navbar.inc" %>
         <br />
         <div class="container-fluid">
-            <form class="form-horizontal">
+            <form class="form-horizontal" method="post" action="recipesearch">
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-4">
                         <label for="keywords">Recipe Search Keywords: </label>
-                        <input id="keywords" type="text" class="form-control" placeholder="Enter Keywords">
+                        <input id="keywords" name="keywords" type="text" class="form-control" placeholder="Enter Keywords" value="${lastkeywords}">
                     </div>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col-sm-4 col-sm-offset-4">
-                        <button type="button" class="btn btn-default">Search</button>
+                        <button type="submit" class="btn btn-default">Search</button>
                     </div>
                 </div>
             </form>
             <hr />
-            <h1 align="center">Search Results</h1>
-            <br />
-            <table class="table table-striped">
-                <tr>
-                    <th>Add Recipe Card?</th>
-                    <th>Recipe Name</th>
-                    <th>Ingredients</th>
-                    <th>Image of Recipe</th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="checkbox">
-                            <label for="recipecard">
-                                <input id="recipecard" type="checkbox" title="Recipe Card">  Recipe Card
-                            </label>
-                        </div>
-                    </td>
-                    <td>My Recipe Name</td>
-                    <td>list of recipe Ingredients</td>
-                    <td>Image of the recipe</td>
-                </tr>
-                                <tr>
-                    <td>
-                        <div class="checkbox">
-                            <label for="recipecard">
-                                <input id="recipecard" type="checkbox" title="Recipe Card">  Recipe Card
-                            </label>
-                        </div>
-                    </td>
-                    <td>My Recipe Name</td>
-                    <td>list of recipe Ingredients</td>
-                    <td>Image of the recipe</td>
-                </tr>
-                                </tr>
-                                <tr>
-                    <td>
-                        <div class="checkbox">
-                            <label for="recipecard">
-                                <input id="recipecard" type="checkbox" title="Recipe Card">  Recipe Card
-                            </label>
-                        </div>
-                    </td>
-                    <td>My Recipe Name</td>
-                    <td>list of recipe Ingredients</td>
-                    <td>Image of the recipe</td>
-                </tr>
-            </table>
-      </div>
+            <c:choose>
+                <c:when test="${recipelist==null}">
+                    <c:set value="display: none;" var="cssStyle"></c:set>
+                </c:when>
+                <c:otherwise>
+                    <c:set value="display: inline;" var="cssStyle"></c:set>
+                </c:otherwise>
+            </c:choose>
+            <div id="search" style="${cssStyle}">
+                <h1 align="center">Search Results</h1>
+                <br />
+                <table class="table table-striped">
+                    <tr>
+                        <th>Add Recipe Card?</th>
+                        <th>Recipe Name</th>
+                        <th>Ingredients</th>
+                        <th>Image of Recipe</th>
+                    </tr>
+                    <c:forEach items="${recipelist}" var="recipe">
+                        <tr>
+                            <td>
+                                <div class="checkbox">
+                                    <label for="recipecard">
+                                        <input id="recipecard" type="checkbox" title="Recipe Card">  Recipe Card
+                                    </label>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <a href="recipedetailpage?id=${recipe.id}"><label>${recipe.recipeName}</label></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <ul>
+                                    <c:forEach items="${recipe.ingredients}" var="ingredients">
+                                        <li>${ingredients}</li>
+                                    </c:forEach>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    <img src="${recipe.smallImageUrls[0]}" />
+                                </div>
+                            </td>                        
+                        </tr>
+                    </c:forEach>
+                </table>
+            </div>
+        </div>
+    
+
         <%@ include file="includes/footer.inc" %>
     </body>
 </html>

@@ -5,17 +5,25 @@
  */
 package edu.byui.cs313.recipehub;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
- *
- * @author JL5372
+     Document   : recipedetailpage
+    Created on : Mar 29, 2017, 08:50:53 PM
+    Author     : winsonso
  */
 @WebServlet(name = "recipedetailpage", urlPatterns = {"/recipedetailpage"})
 public class recipedetailpage extends HttpServlet {
@@ -31,19 +39,26 @@ public class recipedetailpage extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet recipedetailpage</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet recipedetailpage at " + request.getContextPath() + " : " + request.getParameter("id") + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        
+        String keywords = (String) session.getAttribute("lastkeywords");
+        URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=4deefe42&_app_key=3b819d845d90d65041e11e3afa106ca0&q=" + keywords);
+        ObjectMapper mapper = new ObjectMapper();
+
+        Map<String, Object> map = mapper.readValue(url, Map.class);
+        List list = (List)map.get("matches");
+        List<String> _class = new ArrayList<String>(Arrays.asList("warning", "danger", "success", "info", "primary", "warning"));
+        Map<String, Object> mappy = new HashMap<String, Object>();
+        
+        for(Object tempObj: (ArrayList<?>) list) {
+            if(((Map<String, Object>)tempObj).get("id").equals(request.getParameter("id"))) {                
+                mappy = (Map<String, Object>) tempObj;
+            }
         }
+        session.setAttribute("_class", _class);
+        session.setAttribute("mappy", mappy);
+        response.sendRedirect("recipedetails.jsp");         
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

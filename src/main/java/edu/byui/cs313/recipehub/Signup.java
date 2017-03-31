@@ -41,37 +41,12 @@ public class Signup extends HttpServlet {
         String email = request.getParameter("signupEmail");
         String password  = request.getParameter("newPassword");
         
+        SignupDBConnection sdbc = new SignupDBConnection(firstName, lastName, username, email, password);
         
-         
+        String dbResult = sdbc.executeSignup();
         
-        try {
-                String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
-                
-          
-                Connection connection = DriverManager.getConnection(dbUrl);
-                String sql = "INSERT INTO person (first_name, last_name, email, username, password) VALUES (?, ?, ?, ?, ?)";
-                
-                PreparedStatement stmt = connection.prepareStatement(sql);
-                
-                stmt.setString(1, firstName);
-                stmt.setString(2, lastName);
-                stmt.setString(3, email);
-                stmt.setString(4, username);
-                stmt.setString(5, password);
-                
-                int rows = stmt.executeUpdate();
-                
-                System.out.println("Rows impacted :" + rows);
-                
-                response.getWriter().write("User Created Successfully!");
-                  
-                }catch (SQLException ex) {
-                
-               System.out.println(ex);
-               response.getWriter().write("Unable to Create User -- Try Another Username");
-               
-            }
-
+        response.getWriter().write(dbResult);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

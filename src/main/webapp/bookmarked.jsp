@@ -17,6 +17,7 @@
     </head>
     <body>
     <%@ include file="includes/navbar.inc" %>
+    <%@ include file="includes/logout.js"%>
         
         <div class="container">
             <h2>Bookmarked Recipes</h2>         

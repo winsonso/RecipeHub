@@ -19,6 +19,7 @@
     </head>
         <body>
         <%@ include file="includes/navbar.inc" %>
+        <%@ include file="includes/logout.js"%>
         <br />
         <div class="container-fluid">
             <div class="well well-sm col-md-8 col-md-offset-2"><h3 align="center">${mappy['recipeName']}</h3></div>

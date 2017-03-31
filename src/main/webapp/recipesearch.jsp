@@ -13,6 +13,7 @@
     </head>
     <body>
         <%@ include file="includes/navbar.inc" %>
+        <%@ include file="includes/logout.js"%>
         <br />
         <div class="container-fluid">
             <form class="form-horizontal" method="post" action="recipesearch">

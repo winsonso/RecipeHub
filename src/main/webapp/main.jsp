@@ -21,6 +21,7 @@
     </head>
     <body>
     <%@ include file="includes/navbar.inc" %>
+    <%@ include file="includes/logout.js"%>
     
     <%@ include file="includes/footer.inc" %>
     </body>

@@ -1,4 +1,4 @@
-        <nav class="navbar navbar-default">
+<nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -16,7 +16,7 @@
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="#"><span class="glyphicon glyphicon-user"></span>&nbsp;<c:out value="${sessionScope.username}"/></a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                        <li><a id="logoutbutton" href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
                     </ul>
                 </div>
             </div>

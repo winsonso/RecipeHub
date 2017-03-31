@@ -40,52 +40,20 @@ public class ValidateLogin extends HttpServlet {
         
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String rsPassword = "";
+        String dbResponse;
         
-        try {
-                String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
-                
-          
-                Connection connection = DriverManager.getConnection(dbUrl);
-                String sql = "SELECT password FROM person WHERE username = ?";
-                
-                PreparedStatement stmt = connection.prepareStatement(sql);
-                
-                stmt.setString(1, username);
-           
-                
-                ResultSet rs = stmt.executeQuery();
-                
-                 while (rs.next()){
-                //there should always be only one result returned since username is unique    
-                    rsPassword = rs.getString("password");
-                }
-                
-                
-                if (rs == null){
-                    
-                    response.getWriter().write("Username or Password Didn't Match Our Records!");
-                    
-                }
-                else if (password.equals(rsPassword)){
-                    session.setAttribute("username", username);
-                    response.getWriter().write("main.jsp"); //arbitrarily chosen 
-                }
-                else{
-                    response.getWriter().write("Incorrect Password!");
-                }
-               
-               
-                
-                  
-                }catch (SQLException ex) {
-                
-               System.out.println(ex);
-               response.getWriter().write("SQL issue");
-               
-            }
+        ValidateLoginDBConnection vldbc = new ValidateLoginDBConnection(username, password);
         
+        dbResponse = vldbc.executeValidateLogin();
         
+        if (dbResponse.equals("main.jsp")){
+            session.setAttribute("username", username);
+            response.getWriter().write(dbResponse);
+        }
+        else {
+            response.getWriter().write(dbResponse);
+        }
+       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

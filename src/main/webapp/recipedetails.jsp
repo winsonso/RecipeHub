@@ -59,17 +59,24 @@
                 <div class="col-md-6">
                     <div class="well well-sm">
                     <h4 align="center">Flavors</h4>
-                    <ul>
-                    <c:forEach var="flavor" items="${mappy['flavors']}" varStatus="status">
-                        <li><span>${flavor.key}</span>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-${_class[status.index]} progress-bar-striped" style="width:${flavor.value *100}%">
-                                <span style="color:black;"> <fmt:formatNumber value="${flavor.value *100}" minFractionDigits="0" maxFractionDigits="1"/>% (${flavor.key})</span>
-                            </div>
-                        </div>
-                        </li>        
-                    </c:forEach>
-                    </ul>
+                <c:choose>
+                    <c:when test="${mappy['flavors'] != null}">
+                        <ul>
+                        <c:forEach var="flavor" items="${mappy['flavors']}" varStatus="status">
+                            <li><span>${flavor.key}</span>
+                                <div class="progress">
+                                    <div class="progress-bar progress-bar-${_class[status.index]} progress-bar-striped" style="width:${flavor.value *100}%">
+                                        <span style="color:black;"> <fmt:formatNumber value="${flavor.value *100}" minFractionDigits="0" maxFractionDigits="1"/>% (${flavor.key})</span>
+                                    </div>
+                                </div>
+                            </li>        
+                        </c:forEach>
+                        </ul>    
+                    </c:when>
+                    <c:otherwise>
+                        <h4>There is no flavor</h4>
+                    </c:otherwise>
+                </c:choose>
                     </div>
                 </div>   
             </div>            

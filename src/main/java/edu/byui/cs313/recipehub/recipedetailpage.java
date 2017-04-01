@@ -7,6 +7,7 @@ package edu.byui.cs313.recipehub;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -60,7 +61,7 @@ public class recipedetailpage extends HttpServlet {
         }
         session.setAttribute("_class", _class);
         session.setAttribute("mappy", mappy);
-        response.sendRedirect("recipedetails.jsp");         
+        response.sendRedirect("recipedetails.jsp");    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

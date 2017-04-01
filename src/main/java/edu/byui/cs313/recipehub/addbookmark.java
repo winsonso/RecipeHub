@@ -7,20 +7,23 @@ package edu.byui.cs313.recipehub;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.util.HashMap;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
 
 /**
  *
- * @author zaccianflone
+ * @author JL5372
  */
-@WebServlet(name = "ValidateLogin", urlPatterns = {"/ValidateLogin"})
-public class ValidateLogin extends HttpServlet {
+@WebServlet(name = "addbookmark", urlPatterns = {"/addbookmark"})
+public class addbookmark extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -33,29 +36,39 @@ public class ValidateLogin extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-             response.setContentType("text/html;charset=UTF-8");
-       
-        //Obtain the session object, create a new session if doesn't exist
-        HttpSession session = request.getSession(true);
+        response.setContentType("text/html;charset=UTF-8");
+        HttpSession session = request.getSession();
+        List list = (List)session.getAttribute("recipelist");
+        Map<String, Object> recipemap = new HashMap<String, Object>();
         
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        String dbResponse;
-        
-        ValidateLoginDBConnection vldbc = new ValidateLoginDBConnection(username, password);
-        
-        dbResponse = vldbc.executeValidateLogin();
-        Integer id = vldbc.getUserID();
-        
-        if (dbResponse.equals("main.jsp")){
-            session.setAttribute("username", username);
-            session.setAttribute("user_id", id);
-            response.getWriter().write(dbResponse);
+        for(Object recipe : (List)list) {
+            if (((Map<String, Object>)recipe).get("id").equals(request.getParameter("id"))){
+                recipemap=(Map<String, Object>)recipe;
+            }
         }
-        else {
-            response.getWriter().write(dbResponse);
+        String recipe_api_id = recipemap.get("id").toString();
+        String recipe_name = recipemap.get("recipeName").toString();
+        String ingredients = recipemap.get("ingredients").toString();
+        ArrayList<String> images = (ArrayList<String>)recipemap.get("smallImageUrls");
+        String image_url = images.get(0);
+        
+        Integer user_id = (Integer)session.getAttribute("user_id");
+        
+        bookmarkDBConnection conn = new bookmarkDBConnection(recipe_api_id, recipe_name, ingredients, image_url, user_id);
+        String dbResponse = conn.addBookmark();
+        
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet addbookmark</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>" + session.getAttribute("user_id")+  " Servlet addbookmark at " + request.getContextPath() + " " + dbResponse + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
-       
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

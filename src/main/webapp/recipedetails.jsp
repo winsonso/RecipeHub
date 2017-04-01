@@ -33,7 +33,15 @@
                     </h3>
                     <h3>Cooking Time: <fmt:formatNumber value="${mappy['totalTimeInSeconds']/60}" minFractionDigits="0" maxFractionDigits="0"/> minutes</h3>
                     <h3>Type: ${mappy['attributes']['course'][0]}</h3>
-                    <br />
+                </div>
+                <div class="col-md-6">
+                    <div class="well well-sm col-md-4" style="text-align: -webkit-center;">
+                    <img style="height: 100%;" src="${mappy['smallImageUrls'][0]}" />
+                    </div>
+                </div>   
+            </div>
+            <div class="row">
+                <div class="col-md-6">
                     <div class="well well-sm"><h4 align="center">Recipe Ingredients</h4></div>
                     <table class="table table-striped">  
                         <tr>
@@ -49,9 +57,6 @@
                     </table>
                 </div>
                 <div class="col-md-6">
-                    <div class="jumbotron" style="text-align: -webkit-center;">
-                    <img style="height: 120px; width: inherit;" src="${mappy['smallImageUrls'][0]}" />
-                    </div>
                     <div class="well well-sm">
                     <h4 align="center">Flavors</h4>
                     <ul>
@@ -65,12 +70,9 @@
                         </li>        
                     </c:forEach>
                     </ul>
-                    
-
                     </div>
-                </div>
-            </div>
-            
+                </div>   
+            </div>            
       </div>
         <%@ include file="includes/footer.inc" %>
     </body>

@@ -21,8 +21,9 @@ public class ValidateLoginDBConnection {
     private String password;
     private String rsPassword;
     //change this to change location of Database
-    private String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
-    
+    //private String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
+    private String dbUrl = "jdbc:postgresql://ec2-23-21-224-106.compute-1.amazonaws.com:5432/dddmjubbtu6r84?user=gktfmzbqqxantd&password=04cd22340bf076d8466ea3fa5e71ea7666e367212c1120c1571cf6bf13d050c1&sslmode=disable";
+
     ValidateLoginDBConnection (String username, String password){
         this.username = username;
         this.password = password;
@@ -31,7 +32,7 @@ public class ValidateLoginDBConnection {
     String executeValidateLogin(){
         
         try {
-                String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
+               // String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
                 
           
                 Connection connection = DriverManager.getConnection(dbUrl);
@@ -50,7 +51,7 @@ public class ValidateLoginDBConnection {
                 }
                 
                 
-              if (password.equals(rsPassword)){
+                if (password.equals(rsPassword)){
                     
                     return "main.jsp"; //arbitrarily chosen 
                 }
@@ -62,10 +63,29 @@ public class ValidateLoginDBConnection {
                 
                System.out.println(ex);
                return "SQL issue";
-               
             }
     }
-        
+    
+        Integer getUserID(){
+            try {
+                Connection connection = DriverManager.getConnection(dbUrl);
+                String sql = "SELECT id FROM person WHERE username = ?";
+                Integer user_id = 0;
+                PreparedStatement stmt = connection.prepareStatement(sql);
+                
+                stmt.setString(1, username);
+           
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()){ 
+                    user_id = rs.getInt("id");
+                }
+                return user_id;
+                
+            }catch (SQLException ex) {
+                System.out.println(ex);
+                return 0;
+            }
+        }
     }
     
     

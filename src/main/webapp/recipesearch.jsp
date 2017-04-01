@@ -44,7 +44,7 @@
                 <br />
                 <table class="table table-striped">
                     <tr>
-                        <th>Add Recipe Card?</th>
+                        <th>Add Bookmark?</th>
                         <th>Recipe Name</th>
                         <th>Ingredients</th>
                         <th>Image of Recipe</th>
@@ -52,10 +52,8 @@
                     <c:forEach items="${recipelist}" var="recipe">
                         <tr>
                             <td>
-                                <div class="checkbox">
-                                    <label for="recipecard">
-                                        <input id="recipecard" type="checkbox" title="Recipe Card">  Recipe Card
-                                    </label>
+                                <div>
+                                    <a class="btn btn-default" href="addbookmark?id=${recipe.id}"><label>Add</label></a>
                                 </div>
                             </td>
                             <td>

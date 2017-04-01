@@ -8,6 +8,7 @@ package edu.byui.cs313.recipehub;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.net.URL;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class recipedetailpage extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String keywords = (String) session.getAttribute("lastkeywords");
+        keywords =  URLEncoder.encode(keywords, "UTF-8");
         URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=4deefe42&_app_key=3b819d845d90d65041e11e3afa106ca0&q=" + keywords);
         ObjectMapper mapper = new ObjectMapper();
 

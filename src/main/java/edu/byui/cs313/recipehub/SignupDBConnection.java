@@ -23,8 +23,9 @@ public class SignupDBConnection {
       private String password;
       
       //change this to change location of Database
-      private String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
-      
+      //private String dbUrl = "jdbc:postgresql://ec2-174-129-41-23.compute-1.amazonaws.com:5432/d7dgs18pf75krp?user=kxnmiindzdmaod&password=40fa571cf0785bbc25b56ae0f82b39676ee66e2fcb97ddadf070d56b833b6ed4&sslmode=disable";
+      private String dbUrl = "jdbc:postgresql://ec2-23-21-224-106.compute-1.amazonaws.com:5432/dddmjubbtu6r84?user=gktfmzbqqxantd&password=04cd22340bf076d8466ea3fa5e71ea7666e367212c1120c1571cf6bf13d050c1&sslmode=disable";
+
       SignupDBConnection (String firstName, String lastName, String username, String email, String password){
           this.firstName = firstName;
           this.lastName = lastName;

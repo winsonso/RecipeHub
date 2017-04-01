@@ -7,23 +7,20 @@ package edu.byui.cs313.recipehub;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.HashMap;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
 
 /**
  *
  * @author JL5372
  */
-@WebServlet(name = "addbookmark", urlPatterns = {"/addbookmark"})
-public class addbookmark extends HttpServlet {
+@WebServlet(name = "getbookmarks", urlPatterns = {"/getbookmarks"})
+public class getbookmarks extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,30 +35,14 @@ public class addbookmark extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         HttpSession session = request.getSession();
-        List list = (List)session.getAttribute("recipelist");
-        Map<String, Object> recipemap = new HashMap<String, Object>();
-        
-        for(Object recipe : (List)list) {
-            if (((Map<String, Object>)recipe).get("id").equals(request.getParameter("id"))){
-                recipemap=(Map<String, Object>)recipe;
-            }
-        }
-        String recipe_api_id = recipemap.get("id").toString();
-        String recipe_name = recipemap.get("recipeName").toString();
-        String ingredients = recipemap.get("ingredients").toString();
-        ArrayList<String> images = (ArrayList<String>)recipemap.get("smallImageUrls");
-        String image_url = images.get(0);
-        String keywords = request.getParameter("keywords");
-        
-        Integer user_id = (Integer)session.getAttribute("user_id");
-        
+        Integer person_id = (Integer)session.getAttribute("user_id");
         try {
-            bookmarkDBConnection conn = new bookmarkDBConnection(recipe_api_id, recipe_name, ingredients, image_url, user_id, keywords);
-            String dbResponse = conn.addBookmark();
-        } catch (Exception ex) {
-            System.out.println(ex);
-        }
-        response.sendRedirect("bookmarked.jsp");
+                bookmarkDBConnection conn = new bookmarkDBConnection(person_id);
+                ArrayList<ArrayList<String>> dbResultSet = conn.getBookmarks();
+                session.setAttribute("bookmarks", dbResultSet);
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

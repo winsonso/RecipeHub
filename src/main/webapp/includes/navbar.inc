@@ -1,3 +1,6 @@
+<c:if test="${username==null}">
+    <c:redirect url="index.jsp" />
+</c:if> 
 <nav class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">

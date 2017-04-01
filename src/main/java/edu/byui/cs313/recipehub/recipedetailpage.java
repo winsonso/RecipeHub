@@ -43,14 +43,28 @@ public class recipedetailpage extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         response.setContentType("text/html;charset=UTF-8");
-        
-        String keywords = (String) session.getAttribute("lastkeywords");
+        String keywords;
+        if(request.getParameter("keywords") != null){
+            keywords = request.getParameter("keywords");
+        } else {
+            keywords = (String) session.getAttribute("lastkeywords");
+        }
         keywords =  URLEncoder.encode(keywords, "UTF-8");
         URL url = new URL("http://api.yummly.com/v1/api/recipes?_app_id=4deefe42&_app_key=3b819d845d90d65041e11e3afa106ca0&q=" + keywords);
         ObjectMapper mapper = new ObjectMapper();
 
         Map<String, Object> map = mapper.readValue(url, Map.class);
         List list = (List)map.get("matches");
+        
+        URL urlgr = new URL("http://api.yummly.com/v1/api/recipe/" + request.getParameter("id") + "?_app_id=4deefe42&_app_key=3b819d845d90d65041e11e3afa106ca0");
+        ObjectMapper mappergr = new ObjectMapper();
+
+        Map<String, Object> mapgr = mappergr.readValue(urlgr, Map.class);
+        Map<String, Object> listgr = (HashMap<String, Object>)mapgr.get("source");
+
+        String urlstring = listgr.get("sourceRecipeUrl").toString();
+        
+        
         List<String> _class = new ArrayList<String>(Arrays.asList("warning", "danger", "success", "info", "primary", "warning"));
         Map<String, Object> mappy = new HashMap<String, Object>();
         
@@ -61,6 +75,8 @@ public class recipedetailpage extends HttpServlet {
         }
         session.setAttribute("_class", _class);
         session.setAttribute("mappy", mappy);
+        session.setAttribute("sourcepageurl", urlstring);
+        session.setAttribute("keywords", keywords);
         response.sendRedirect("recipedetails.jsp");    
     }
 

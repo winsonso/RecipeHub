@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="java.net.*" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -53,7 +54,7 @@
                         <tr>
                             <td>
                                 <div>
-                                    <a class="btn btn-default" href="addbookmark?id=${recipe.id}"><label>Add</label></a>
+                                    <a class="btn btn-default" href="addbookmark?id=${recipe.id}&keywords=${lastkeywords}"><label>Add</label></a>
                                 </div>
                             </td>
                             <td>
@@ -72,7 +73,9 @@
                             </td>
                             <td>
                                 <div>
-                                    <img src="${recipe.smallImageUrls[0]}" />
+                                    <c:set var="image_url" value="${recipe.smallImageUrls[0]}"/>
+                                    
+                                    <img src="${fn:replace(image_url,'=s90', '=s180')}" />
                                 </div>
                             </td>                        
                         </tr>

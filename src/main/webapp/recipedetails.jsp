@@ -5,6 +5,7 @@
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -25,7 +26,7 @@
             <div class="well well-sm col-md-8 col-md-offset-2"><h3 align="center">${mappy['recipeName']}</h3></div>
             <br />
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4 col-md-offset-2">
                     <h3>Rating: 
                         <c:forEach begin="1" end="${mappy['rating']}" var="i">
                             <div class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-thumbs-up"></span></div>
@@ -33,13 +34,16 @@
                     </h3>
                     <h3>Cooking Time: <fmt:formatNumber value="${mappy['totalTimeInSeconds']/60}" minFractionDigits="0" maxFractionDigits="0"/> minutes</h3>
                     <h3>Type: ${mappy['attributes']['course'][0]}</h3>
+                    <a class="btn btn-default" href="addbookmark?id=${mappy['id']}&keywords=${keywords}"><label>Add Bookmark</label></a>
+                    <a class="btn btn-default" href="${sourcepageurl}" target='new'><label>Full Recipe Directions</label></a>
                 </div>
                 <div class="col-md-6">
-                    <div class="well well-sm col-md-4" style="text-align: -webkit-center;">
-                    <img style="height: 100%;" src="${mappy['smallImageUrls'][0]}" />
+                    <div style="text-align: -webkit-center;">
+                    <img src="${fn:replace(mappy['smallImageUrls'][0],'=s90','=s300')}" />
                     </div>
                 </div>   
             </div>
+            <br /> 
             <div class="row">
                 <div class="col-md-6">
                     <div class="well well-sm"><h4 align="center">Recipe Ingredients</h4></div>
@@ -74,7 +78,7 @@
                         </ul>    
                     </c:when>
                     <c:otherwise>
-                        <h4>There is no flavor</h4>
+                        <h4 style='text-align: center; color: red'>No flavors defined for this recipe.</h4>
                     </c:otherwise>
                 </c:choose>
                     </div>

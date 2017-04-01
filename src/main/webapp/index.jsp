@@ -41,34 +41,37 @@
          </nav>
         <div id="form-messages"></div>
 
-        <div class="col-sm-1">
 
-        </div>
 
-        <div class="col-sm-11">
+        <div class="container-fluid">
 
             <div id="login" class="tab-pane fade in active">
 
-                <form id="ajax-login" method="post" action="ValidateLogin">
-                    <div class="field">
-                        <br>
-                        <br>
-                        <label for="name">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                    </div>
-
+                <form class="form-horizontal" id="ajax-login" method="post" action="ValidateLogin">
                     <br>
-
-                    <div class="field">
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-4">
+                            <label for="username">Username: </label>
+                            <input class='form-control' type="text" id="username" name="username" required>
+                        </div>
                     </div>
-
-                    <div class="field">
-                        <br>
-                        <hr>
-                        <button type="submit" class="btn btn-default">Submit</button>
-                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-4">
+                            <label for="password">Password:</label>
+                            <input class='form-control' type="password" id="password" name="password" required>
+                        </div>
+                    </div>    
+                    <br>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-3 col-md-offset-4">
+                            <div class="field">
+                                <button type="submit" class="btn btn-default">Submit</button>
+                            </div>
+                        </div
+                    </div> 
                 </form>
             </div>
 

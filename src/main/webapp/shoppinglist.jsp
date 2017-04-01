@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,7 +16,7 @@
         <%@ include file="includes/logout.js"%>
         <br />
         <div class="container-fluid">
-            <div class="well well-sm col-md-8 col-md-offset-2"><h3 align="center">-recipe name- Shopping List</h3></div>
+            <div class="well well-sm col-md-8 col-md-offset-2"><h3 align="center">${param.recipename} - Shopping List</h3></div>
             <br />
             <div class="col-md-8 col-md-offset-2">
                 <table class="table table-striped">
@@ -22,27 +24,18 @@
                         <th>Items</th>
                         <th>Ingredients</th>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>Ingredient 1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Ingredient 2</td>
-                    </tr>            
-                    <tr>
-                        <td>3</td>
-                        <td>Ingredient 3</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Ingredient 4</td>
-                    </tr>                
-                    <tr>
-                        <td>5</td>
-                        <td>Ingredient 5</td>
-                    </tr>       
+                    
+
+                    <c:forEach items="${param.ingredients}" var="ingredient" varStatus="loop" >
+                        <tr>
+                            <td>${loop.index +1}</td>
+                            <td>${ingredient}</td>
+                        </tr>
+                    </c:forEach>
                 </table>
+                 <a onclick="window.print();" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-print"></span> Print 
+                 </a>
             </div>
       </div>
         <%@ include file="includes/footer.inc" %>

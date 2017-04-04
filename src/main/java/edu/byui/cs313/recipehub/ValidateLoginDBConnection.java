@@ -86,6 +86,27 @@ public class ValidateLoginDBConnection {
                 return 0;
             }
         }
+        
+               String getFirstName(){
+            try {
+                Connection connection = DriverManager.getConnection(dbUrl);
+                String sql = "SELECT first_name FROM person WHERE username = ?";
+                String first_name = "";
+                PreparedStatement stmt = connection.prepareStatement(sql);
+                
+                stmt.setString(1, username);
+           
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()){ 
+                    first_name = rs.getString("first_name");
+                }
+                return first_name;
+                
+            }catch (SQLException ex) {
+                System.out.println(ex);
+                return "";
+            }
+        }
     }
     
     

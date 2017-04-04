@@ -46,10 +46,12 @@ public class ValidateLogin extends HttpServlet {
         
         dbResponse = vldbc.executeValidateLogin();
         Integer id = vldbc.getUserID();
+        String firstName = vldbc.getFirstName();
         
         if (dbResponse.equals("main.jsp")){
             session.setAttribute("username", username);
             session.setAttribute("user_id", id);
+            session.setAttribute("first_name", firstName);
             response.getWriter().write(dbResponse);
         }
         else {

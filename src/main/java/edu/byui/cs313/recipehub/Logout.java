@@ -36,6 +36,9 @@ public class Logout extends HttpServlet {
         
         HttpSession session = request.getSession(true);
         session.removeAttribute("username");
+        session.removeAttribute("first_name");
+        session.removeAttribute("user_id");
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

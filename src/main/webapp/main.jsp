@@ -23,6 +23,16 @@
     <%@ include file="includes/navbar.inc" %>
     <%@ include file="includes/logout.js"%>
     
+     <div class="col-md-offset-1">
+    
+    <h3>Welcome to Pantry Pro, <c:out value="${sessionScope.first_name}"/>!</h3>
+    <hr>
+    <p> Select <b>Recipe Search</b> to Get Started </p>
+    
+    
+
+     </div>
+    
     <%@ include file="includes/footer.inc" %>
     </body>
 

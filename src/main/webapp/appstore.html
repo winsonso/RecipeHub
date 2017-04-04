@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>RecipeHub - AppStore</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style>
+
+            #backtotopbutton{
+                border-radius: 0px 0px 10px 10px;
+                background-color: purple;
+                position: fixed;
+                top: 0;
+                right: 5%;
+                height: 30px;
+                width: 100px;
+                list-style: none;
+                text-align: center;
+
+              }
+              #backtotopbutton a{
+                color: white;
+              }
+        </style>
+    </head>
+    <body>
+                    
+
+        <nav style="background-color: orange; " class="navbar navbar-default">
+            <div class="container-fluid">
+                <div style="background-color: orange; " class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>                        
+                    </button>
+                </div>
+                <div style="background-color: orange; " class="collapse navbar-collapse" id="myNavbar">
+                        <h2>RecipeHub - Lets make some food! </h2>
+                </div>
+            </div>
+            <div id="backtotopbutton">
+                <a href="https://cs313-recipehub.herokuapp.com/" target="_blank">Try it here </a>
+            </div>
+        </nav>
+
+
+        
+        <div class="container-fluid">
+
+            <div class="row">
+                <div class="col-md-10">
+                    <br />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-7">
+                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol   class="carousel-indicators">
+                          <li style="background-color: red" data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                          <li style="background-color: red"  data-target="#myCarousel" data-slide-to="1"></li>
+                          <li style="background-color: red"  data-target="#myCarousel" data-slide-to="2"></li>
+                          <li style="background-color: red"  data-target="#myCarousel" data-slide-to="3"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                          <div class="item active">
+                              <img src="images/search.png" alt="Recipe Search">
+                            <div style="color: red"  class="carousel-caption">
+                              <h2>Recipe Search</h2>
+                              <h4>Search the Yummly API for delicious recipe's.</h4>
+                            </div>
+                          </div>
+
+                          <div class="item">
+                            <img src="images/details.png" alt="Recipe Details Page">
+                            <div style="color: red"  class="carousel-caption">
+                              <h2>Recipe Details Page</h2>
+                              <h4>A more detail look at a recipe.</h4>
+                            </div>
+                          </div>
+
+                          <div class="item">
+                            <img src="images/bookmark.png" alt="Recipe Bookmarks">
+                            <div  style="color: red" class="carousel-caption">
+                              <h2>Recipe Bookmarks Page</h2>
+                              <h4>Bookmark your favorite recipe's for future use></h4>
+                            </div>
+                          </div>
+
+                          <div class="item">
+                            <img src="images/shoplist.png" alt="Shopping List">
+                            <div style="color: red"  class="carousel-caption">
+                              <h2>Shopping List Page</h2>
+                              <h4>Access a shopping list for you selected recipe.</h4>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                          <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                          <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
+                      </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="well">
+                        <h4>
+                            RecipeHub is a recipe search and book marking portal.  
+                            RecipeHumb utilizes the Yummly API as the source for recipe's.
+                        </h4>
+                        <br />
+                        <h4>Key features are:</h4>
+                        <ul>
+                            <li>Sign-up Dialog</li>
+                            <li>User Login Page</li>
+                            <li>Recipe Search Page</li>
+                            <li>Recipe Details Page</li>
+                            <li>Recipe Bookmarks Page</li>
+                            <li>Recipe Shopping List Page</li>
+                            <li>Link to Recipe Directions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                
+    </body>
+
+
+    
+    
+</html>

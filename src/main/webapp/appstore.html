@@ -11,7 +11,7 @@
 
             #backtotopbutton{
                 border-radius: 0px 0px 10px 10px;
-                background-color: purple;
+                background-color: red;
                 position: fixed;
                 top: 0;
                 right: 5%;
@@ -24,12 +24,13 @@
               #backtotopbutton a{
                 color: white;
               }
+
         </style>
     </head>
     <body>
                     
 
-        <nav style="background-color: orange; " class="navbar navbar-default">
+<!--        <nav style="background-color: orange; " class="navbar navbar-default">
             <div class="container-fluid">
                 <div style="background-color: orange; " class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -41,15 +42,18 @@
                 <div style="background-color: orange; " class="collapse navbar-collapse" id="myNavbar">
                         <h2>RecipeHub - Lets make some food! </h2>
                 </div>
-            </div>
+            </div>-->
             <div id="backtotopbutton">
-                <a href="https://cs313-recipehub.herokuapp.com/" target="_blank">Try it here </a>
+                <a href="https://recipe-hub01.herokuapp.com" target="_blank">Try it here </a>
             </div>
-        </nav>
+<!--        </nav>-->
 
-
+<div id="head">
+    <h1 style="text-align:center;color: orange;">Welcome</h1>
+    <p style="text-align:center;color: orange;">Recipe Hub is designed to work with Yummly to search for recipes and save favorites to your bookmarks so you can return to them in the future and print out the shopping list for any recipe to take to the store with you.
+</div>
         
-        <div class="container-fluid">
+<div class="container-fluid" style="    padding-right: 100px;    padding-left:100px;height: 500px;">
 
             <div class="row">
                 <div class="col-md-10">
@@ -57,7 +61,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-7">
+<!--                <div class="col-md-7">-->
                         <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol   class="carousel-indicators">
@@ -70,32 +74,32 @@
                         <!-- Wrapper for slides -->
                         <div class="carousel-inner" role="listbox">
                           <div class="item active">
-                              <img src="images/search.png" alt="Recipe Search">
-                            <div style="color: red"  class="carousel-caption">
+                              <img src="images/search.png" alt="Recipe Search" width="460" height="550">
+                            <div style="color: orange"  class="carousel-caption">
                               <h2>Recipe Search</h2>
                               <h4>Search the Yummly API for delicious recipe's.</h4>
                             </div>
                           </div>
 
                           <div class="item">
-                            <img src="images/details.png" alt="Recipe Details Page">
-                            <div style="color: red"  class="carousel-caption">
+                            <img src="images/details.png" alt="Recipe Details Page" width="460" height="550">
+                            <div style="color: orange"  class="carousel-caption">
                               <h2>Recipe Details Page</h2>
                               <h4>A more detail look at a recipe.</h4>
                             </div>
                           </div>
 
                           <div class="item">
-                            <img src="images/bookmark.png" alt="Recipe Bookmarks">
-                            <div  style="color: red" class="carousel-caption">
+                            <img src="images/bookmark.png" alt="Recipe Bookmarks" width="460" height="550">
+                            <div  style="color: orange" class="carousel-caption">
                               <h2>Recipe Bookmarks Page</h2>
                               <h4>Bookmark your favorite recipe's for future use></h4>
                             </div>
                           </div>
 
                           <div class="item">
-                            <img src="images/shoplist.png" alt="Shopping List">
-                            <div style="color: red"  class="carousel-caption">
+                            <img src="images/shoplist.png" alt="Shopping List" width="460" height="550">
+                            <div style="color: orange"  class="carousel-caption">
                               <h2>Shopping List Page</h2>
                               <h4>Access a shopping list for you selected recipe.</h4>
                             </div>
@@ -112,8 +116,8 @@
                           <span class="sr-only">Next</span>
                         </a>
                       </div>
-                </div>
-                <div class="col-md-5">
+<!--                </div>-->
+<!--                <div class="col-md-5">
                     <div class="well">
                         <h4>
                             RecipeHub is a recipe search and book marking portal.  
@@ -131,13 +135,12 @@
                             <li>Link to Recipe Directions</li>
                         </ul>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
         
                 
     </body>
-
 
     
     
